@@ -32,11 +32,15 @@
 - (void) createJoysticks {
     l_stick = [[JoyStick alloc] init];
     l_stick.position = CGPointMake(-200, -500);
+    l_stick.xScale = 1.5f;
+    l_stick.yScale = 1.5f;
     [l_stick setSpeed:1];
     [self addChild:l_stick];
     
     r_stick = [[JoyStick alloc] init];
     r_stick.position = CGPointMake(200, -500);
+    r_stick.xScale = 1.5f;
+    r_stick.yScale = 1.5f;
     [r_stick setSpeed:1];
     [self addChild:r_stick];
 }
@@ -77,11 +81,9 @@
 
 
 - (void) setThumbstickDetails {
-    thumbstick = [SKSpriteNode spriteNodeWithImageNamed:@"circle.png"];
+    thumbstick = [SKSpriteNode spriteNodeWithImageNamed:@"thumbstick.png"];
     thumbstick.name = @"thumbstick";
     thumbstick.zPosition = 1;
-    thumbstick.xScale = 0.5f;
-    thumbstick.yScale = 0.5f;
     thumbstick.position = self.position;
     SKConstraint *tc = [SKConstraint distance:[SKRange rangeWithLowerLimit:0.f upperLimit:self.size.width/2] toPoint:self.position];
     thumbstick.constraints = @[tc];
