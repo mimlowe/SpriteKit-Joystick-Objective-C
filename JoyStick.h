@@ -10,9 +10,11 @@
 //Velocity output from joystick for player movement
 //Usage: [your_sprite runAction:[SKAction moveBy:your_joystick.velocity duration:0.1]];
 @property (nonatomic) CGVector velocity;
+
 //Angle output from joystick for player rotation
-//Not yet functional
+//Usage: [your_sprite setZRotation:your_joystick.angle];
 @property (nonatomic) CGFloat angle;
+
 //for best results, use speeds between 1-10
 @property (nonatomic) CGFloat speed;
 

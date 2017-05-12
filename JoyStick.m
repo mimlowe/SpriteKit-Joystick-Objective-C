@@ -4,41 +4,49 @@
 //
 /*
  Example GameScene.m:
- 
- #import "GameScene.h"
- #import "JoyStick.h"
- 
- @implementation GameScene {
- 
- JoyStick *your_joystick;
- SKSpriteNode *player;
- }
- 
- - (void)didMoveToView:(SKView *)view {
- 
- [self createJoystick];
- 
- player = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship.png"];
- CGSize scr = self.scene.frame.size;
- SKConstraint *c = [SKConstraint
- positionX:[SKRange rangeWithLowerLimit:-scr.width/2 upperLimit:scr.width/2]
- Y:[SKRange rangeWithLowerLimit:-scr.height/2 upperLimit:scr.height/2]];
- player.constraints = @[c];
- [self addChild:player];
- }
- 
- - (void) createJoystick {
- your_joystick = [[JoyStick alloc] init];
- your_joystick.position = CGPointMake(0, -500);
- [your_joystick setSpeed:1];
- [self addChild:your_joystick];
- }
- 
- -(void)update:(CFTimeInterval)currentTime {
- [player runAction:[SKAction moveBy:your_joystick.velocity duration:0.1]];
- }
- 
- @end
+
+#import "GameScene.h"
+#import "JoyStick.h"
+
+@implementation GameScene {
+    
+    JoyStick *l_stick;
+    JoyStick *r_stick;
+    SKSpriteNode *player;
+}
+
+- (void)didMoveToView:(SKView *)view {
+    
+    [self createJoysticks];
+    
+    player = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship.png"];
+    player.anchorPoint = CGPointMake(0.5f, 0.5f);
+    CGSize scr = self.scene.frame.size;
+    SKConstraint *c = [SKConstraint
+                       positionX:[SKRange rangeWithLowerLimit:-scr.width/2 upperLimit:scr.width/2]
+                       Y:[SKRange rangeWithLowerLimit:-scr.height/2 upperLimit:scr.height/2]];
+    player.constraints = @[c];
+    [self addChild:player];
+}
+
+- (void) createJoysticks {
+    l_stick = [[JoyStick alloc] init];
+    l_stick.position = CGPointMake(-200, -500);
+    [l_stick setSpeed:1];
+    [self addChild:l_stick];
+    
+    r_stick = [[JoyStick alloc] init];
+    r_stick.position = CGPointMake(200, -500);
+    [r_stick setSpeed:1];
+    [self addChild:r_stick];
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    [player setZRotation:r_stick.angle];
+    [player runAction:[SKAction moveBy:l_stick.velocity duration:0.1]];
+}
+
+@end
  */
 
 #import "JoyStick.h"
