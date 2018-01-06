@@ -4,7 +4,7 @@ A joystick input class written in Objective-C with SpriteKit
 
 ### Example
 
---
+```objective-c
 // ===== Definition =====
 @implementation GameScene {
     JoyStick *joystick;
@@ -40,4 +40,4 @@ A joystick input class written in Objective-C with SpriteKit
     // Linear Implementation
     [player runAction:[SKAction moveBy:joystick.velocity duration:0.1]];
 }
---
+```
