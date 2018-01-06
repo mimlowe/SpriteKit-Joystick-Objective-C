@@ -2,7 +2,7 @@
 
 A joystick input class written in Objective-C with SpriteKit
 
-### Example
+### Example GameScene.m
 
 ```objective-c
 // ===== Definition =====
