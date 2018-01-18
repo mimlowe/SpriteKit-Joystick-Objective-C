@@ -2,6 +2,10 @@
 
 A joystick input class written in Objective-C with SpriteKit
 
+- Supports rotational and linear controls
+
+![alt](https://github.com/mimlowe/SpriteKit-Joystick-Objective-C/blob/master/joystick.png)
+
 ### Example GameScene.m
 
 ```objective-c
